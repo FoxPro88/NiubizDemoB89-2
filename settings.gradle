@@ -1,6 +1,6 @@
+include ':niubiz-sdk'
 include ':cardinalmobilesdk'
 include ':TMXProfilingConnections'
 include ':TMXProfiling'
-include ':niubiz-sdk'
 include ':app'
 rootProject.name = "NiubizDemoB89-2"
