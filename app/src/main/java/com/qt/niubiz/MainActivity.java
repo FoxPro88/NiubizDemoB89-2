@@ -19,6 +19,7 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.niubiz.sdk.NiubizApp;
+import com.niubiz.sdk.presentation.custom.NiubizViewAuthorizationCustom;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -43,9 +44,13 @@ public class MainActivity extends AppCompatActivity {
 
         data.put(NiubizApp.NIUBIZ_CHANNEL, NiubizApp.Channel.MOBILE);
         data.put(NiubizApp.NIUBIZ_COUNTABLE, true);
-        data.put(NiubizApp.NIUBIZ_MERCHANT, "650001252");
-        data.put(NiubizApp.NIUBIZ_PURCHASE_NUMBER, "1906");
-        data.put(NiubizApp.NIUBIZ_AMOUNT, 25.50);
+        data.put(NiubizApp.NIUBIZ_MERCHANT, "341198214");
+        data.put(NiubizApp.NIUBIZ_PURCHASE_NUMBER, "2021");
+        data.put(NiubizApp.NIUBIZ_NAME, "farid");
+        data.put(NiubizApp.NIUBIZ_LASTNAME, "gamarra floreano");
+        data.put(NiubizApp.NIUBIZ_EMAIL, "farid@hotmail.com");
+        data.put(NiubizApp.NIUBIZ_USER_TOKEN, "farid@hotmail.com");
+        data.put(NiubizApp.NIUBIZ_AMOUNT, 25.50);//para traer tarjetas recordadas
         data.put(NiubizApp.NIUBIZ_ENDPOINT, "https://apitestenv.vnforapps.com/");
 
         // MDDS
@@ -59,10 +64,16 @@ public class MainActivity extends AppCompatActivity {
         data.put(NiubizApp.NIUBIZ_MDD, MDDData);
 
 
+        final NiubizViewAuthorizationCustom customView = new NiubizViewAuthorizationCustom();
+        customView.setInputTextColor(R.color.teal_800);
+        customView.setInputTextFont(R.font.dm_sans_bold);
+        customView.setButtonPayColor(R.color.amber_800);
+        customView.setButtonPayText("Pagar...");
+        customView.setInputTextSize(70);
+
         loading.setVisibility(View.VISIBLE);
 
         AndroidNetworking.initialize(getApplicationContext());
-        AndroidNetworking.enableLogging();
         AndroidNetworking.get("https://apitestenv.vnforapps.com/api.security/v1/security")
                 .addHeaders("Authorization","Basic Z2lhbmNhZ2FsbGFyZG9AZ21haWwuY29tOkF2MyR0cnV6")
                 .setTag("test")
@@ -76,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                         try {
                             data.put(NiubizApp.NIUBIZ_SECURITY_TOKEN, response);
 
-                            NiubizApp.authorization(MainActivity.this, data);
+                            NiubizApp.authorization(MainActivity.this, data, customView);
                         } catch (Exception e) {
                             Log.e(TAG, "onCreate: ", e);
                         }
@@ -85,16 +96,10 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onError(ANError error) {
                         loading.setVisibility(View.GONE);
-                        Log.i(TAG, "onError: " + error.getResponse());
-                        Log.i(TAG, "onError: " + error.getErrorCode());
-                        Log.i(TAG, "onError: " + error.getErrorBody());
                         dialogResult("Error al generar token");
                     }
                 });
 
-    }
-
-    public void remeberPayment(View view) {
     }
 
 
