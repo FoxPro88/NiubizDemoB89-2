@@ -28,8 +28,8 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation project(path: ':TMXProfilingConnections')
     implementation project(path: ':TMXProfiling')
+    implementation project(path: ':niubizSDK')
     implementation project(path: ':cardinalmobilesdk')
-    implementation project(path: ':niubiz-sdk')
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'

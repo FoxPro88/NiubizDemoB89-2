@@ -15,7 +15,8 @@
             <option value="$PROJECT_DIR$/TMXProfilingConnections" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/cardinalmobilesdk" />
-            <option value="$PROJECT_DIR$/niubiz-sdk" />
+            <option value="$PROJECT_DIR$/niubizSDK" />
+            <option value="$PROJECT_DIR$/niubiz_sdk" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

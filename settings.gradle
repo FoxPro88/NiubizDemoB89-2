@@ -1,4 +1,6 @@
-include ':niubiz-sdk'
+include ':niubizSDK'
+include ':niubiz_sdk'
+include ':niubiz_sdk'
 include ':cardinalmobilesdk'
 include ':TMXProfilingConnections'
 include ':TMXProfiling'
